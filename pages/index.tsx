@@ -1,54 +1,49 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Link from 'next/link';
 import { createTheme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
     },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
+    menuButton: {
+      marginRight: theme.spacing(2),
     },
-  },
-}));
+    title: {
+      flexGrow: 1,
+    },
+  }),
+);
 
-export default function ColorTextFields() {
+export default function ButtonAppBar() {
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      direction="column"
-      alignItems="center"
-      justify="center"
-    >
-    <form className={classes.root} noValidate autoComplete="off">
-      <div>
-      <TextField
-        id="outlined-secondary"
-        label="Email address"
-        variant="outlined"
-        color="secondary"
-        margin="normal"
-        fullWidth
-        required
-      />
-      </div>
-      <TextField
-        id="outline-secondary"
-        label="Password"
-        variant="outlined"
-        color="secondary"
-        margin="normal"
-        fullWidth
-        required
-      />
-    </form>
-    </Grid>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Top
+          </Typography>
+          <Link href="/signin" passHref>
+          <Button color="inherit">Login</Button>
+          </Link>
+        </Toolbar>
+      </AppBar>
+      <Typography variant="h5">
+        Hello Next.js, Implement demo login screen. 
+      </Typography>
+    </div>
   );
 }
