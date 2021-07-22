@@ -8,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Link from 'next/link';
 
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
